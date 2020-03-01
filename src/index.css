@@ -28,14 +28,35 @@ li{
   margin:20px
 }
 
+.charButtons{
+  display:flex;
+  flex-direction: column;
+  margin:0 auto;
+}
+
 .newCharButton {
   padding: 40px;
   background: white;
   border: none;
   font-size: 2rem;
 }
+
+.deleteButton {
+  border:none;
+  padding:5px;
+  background: #5a4747;
+  text-transform: uppercase;
+}
+
+
 button:hover{
   cursor: pointer;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
 main .wrapper ul {

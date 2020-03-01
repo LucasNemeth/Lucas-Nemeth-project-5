@@ -13,6 +13,7 @@ class App extends Component {
       newCharacter:[],
       charName:'',
       charClass:'',
+      charLvl:'',
       
     }
     this.handleChange=this.handleChange.bind(this);
@@ -48,6 +49,7 @@ class App extends Component {
     // this.setState({ [e.charClass.name]: e.charClass.value });
   }
 //--------------------------Event prevent default--------------------------//
+
   handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -56,8 +58,8 @@ class App extends Component {
       charName:this.state.charName,
       charClass:this.state.charClass,
       charLvl:this.state.charLvl,
+      charJournal:this.state.charJournal,
     }
-
 
     dbRef.push(charObject);
     console.log(charObject)
@@ -65,6 +67,8 @@ class App extends Component {
     this.setState({
       charName: '',
       charClass:'',
+      charLvl:'',
+      charJournal:'',
     })
   }
 
@@ -73,6 +77,11 @@ class App extends Component {
     dbRef.child(characterKey).push();
   }
 
+//-----------------------removing character-------------------------//
+  removeChar = (characterKey) => {
+    const dbRef = firebase.database().ref();
+    dbRef.child(characterKey).remove();
+  }
 //---------------------------render-------------------------------//
   render() {
     return (
@@ -90,12 +99,15 @@ class App extends Component {
                 return (
                   <li key={index}>
                     <a href="">
-                      <button className="newCharButton" onClick={(e)=>{
-                        this.addCharacter(character.key)
-                        e.preventDefault()
-                        }}>
-                        <i className="fa fa-plus-square"></i>
-                      </button>
+                      <div className="charButtons">
+                        <button className="newCharButton" onClick={(e)=>{
+                          this.addCharacter(character.key)
+                          e.preventDefault()
+                          }}>
+                          <i className="fa fa-plus-square"></i>
+                        </button>
+                        <button className="deleteButton" onClick={() => { this.removeChar(character.key)}}>delete</button>
+                      </div>
                     </a>
                   </li>
                 )
@@ -126,6 +138,13 @@ class App extends Component {
                   name="charLvl"
                   onChange={this.handleChange}
                   value={this.state.charLvl}
+                />
+                <label htmlFor="charJournal">Current Quest: </label>
+                <textarea
+                  id="charJournal"
+                  name="charJournal"
+                  onChange={this.handleChange}
+                  value={this.state.charJournal}
                 />
                 <button type="submit">Submit</button>
               </form>
