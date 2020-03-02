@@ -25,13 +25,27 @@ header{
 }
 li{
   list-style: none;
-  margin:20px
+  margin:20px;
+  display:flex;
+}
+
+.charContainer{
+  display: flex;
+}
+
+charButtons,
+.createdChar{
+  display: flex;
+  flex-direction: column;
 }
 
 .charButtons{
-  display:flex;
-  flex-direction: column;
   margin:0 auto;
+}
+
+.createdCharButton{
+  width: 150px;
+  height:150px;
 }
 
 .newCharButton {

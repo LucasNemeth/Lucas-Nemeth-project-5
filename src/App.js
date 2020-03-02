@@ -12,17 +12,16 @@ class App extends Component {
 
     this.state={
       newCharacter:[],
-      // charName:'',
-      // charClass:'',
-      // charLvl:'',
-      charObject:{},
+      charName:'',
+      charClass:'',
+      charLvl:'',
       showNewCharForm:false
       
     }
     // this.handleChange=this.handleChange.bind(this);   
-    this.handleChange=()=>{
-      this.handleChange(this);
-    }
+    // this.handleChange=()=>{
+    //   this.handleChange(this);
+    // }
   }
   
   componentDidMount(){
@@ -51,7 +50,7 @@ class App extends Component {
     });
   }
 
-  handleChange(e){
+  handleChange=(e)=>{
     this.setState({[e.target.name]:e.target.value});
     // this.setState({ [e.charClass.name]: e.charClass.value });
   }
@@ -112,33 +111,41 @@ class App extends Component {
           <div className="wrapper">
             <h2>My Characters</h2>
             <ul>
-              {this.state.newCharacter.map((character, index)=>{
-                return (
-                  <li key={index}>
-                    <a href="">
-                      <div className="charButtons">
-                        <button className="newCharButton" onClick={
-                          this.showForm
-                        }>
-                          <i className="fa fa-plus-square"></i>
-                        </button>
-                        <button className="deleteButton" onClick={() => { this.removeChar(character.key)}}>delete</button>
+              {/* {this.state.newCharacter.map((character, index)=>{
+                return ( */}
+                  <div className="charContainer">
+                    <li >
+                      <a href="">
+                        <div className="charButtons">
+                          <button className="newCharButton" onClick={
+                            this.showForm
+                          }>
+                            <i className="fa fa-plus-square"></i>
+                          </button>
+                        </div>
+                      </a>
+                    </li>
+                  </div>
+                {this.state.newCharacter.map((character, index) => {
+                  return (
+                    <div>
+                      <li key={index}>
+                        <a>
+                          <div className="createdChar">
+                            <button className="createdCharButton">
+                              <i className="fa fa-head-side"></i>
+                            </button>
+                            <button className="deleteButton" onClick={() => { this.removeChar(character.key) }}>delete</button>
 
-                        {/* trying a thing to store info into button */ }
-                        {/* <div>
-                          <newCharButton newChar={this.state.charObject} />
-                          <addCharacter changed={this.manipulator} />
-                        </div> */}
-
-                        
-                      </div>
-                    </a>
-                  </li>
+                          </div>
+                        </a>
+                      </li>
+                    </div>
                 )
               })}
             </ul>
             {/* <FormToggle fromPapa={this.handleFormSubmit} /> */}
-            {this.state.showNewCharForm ? <FormToggle fromPapa={this.handleFormSubmit} /> : null}
+            {this.state.showNewCharForm ? <FormToggle fromPapa={this.handleFormSubmit} fromChangeParent={this.handleChange} /> : null}
             
             
           
