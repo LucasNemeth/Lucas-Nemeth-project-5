@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from './firebase';
+import FormToggle from './FormToggle.js'
 import 'font-awesome/css/font-awesome.min.css';
 import GoogleFontLoader from './GoogleFontLoader.js';
 
@@ -11,12 +12,17 @@ class App extends Component {
 
     this.state={
       newCharacter:[],
-      charName:'',
-      charClass:'',
-      charLvl:'',
+      // charName:'',
+      // charClass:'',
+      // charLvl:'',
+      charObject:{},
+      showNewCharForm:false
       
     }
-    this.handleChange=this.handleChange.bind(this);
+    // this.handleChange=this.handleChange.bind(this);   
+    this.handleChange=()=>{
+      this.handleChange(this);
+    }
   }
   
   componentDidMount(){
@@ -25,6 +31,7 @@ class App extends Component {
     dbRef.on('value', (response) =>{
       const newState = [];
       const data = response.val();
+
 
       for (let key in data){
         const characterInfo={
@@ -40,7 +47,7 @@ class App extends Component {
     })
 
     dbRef.on('value', (response) => {
-
+      console.log(dbRef)
     });
   }
 
@@ -52,6 +59,8 @@ class App extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
+
+    console.log('hi')
 
     const dbRef = firebase.database().ref();
     const charObject={
@@ -75,7 +84,15 @@ class App extends Component {
   addCharacter =(characterKey)=>{
     const dbRef = firebase.database().ref()
     dbRef.child(characterKey).push();
+    console.log(this.state.addCharacter)
   }
+
+  showForm = (e) =>{
+    e.preventDefault();
+    this.setState({showNewCharForm:true})
+    console.log('showForm clicked')
+  }
+  
 
 //-----------------------removing character-------------------------//
   removeChar = (characterKey) => {
@@ -100,55 +117,31 @@ class App extends Component {
                   <li key={index}>
                     <a href="">
                       <div className="charButtons">
-                        <button className="newCharButton" onClick={(e)=>{
-                          this.addCharacter(character.key)
-                          e.preventDefault()
-                          }}>
+                        <button className="newCharButton" onClick={
+                          this.showForm
+                        }>
                           <i className="fa fa-plus-square"></i>
                         </button>
                         <button className="deleteButton" onClick={() => { this.removeChar(character.key)}}>delete</button>
+
+                        {/* trying a thing to store info into button */ }
+                        {/* <div>
+                          <newCharButton newChar={this.state.charObject} />
+                          <addCharacter changed={this.manipulator} />
+                        </div> */}
+
+                        
                       </div>
                     </a>
                   </li>
                 )
               })}
             </ul>
-            <div>
-              <form action="submit" onSubmit={this.handleFormSubmit}>
-                <label htmlFor="charName">Name: </label>
-                <input
-                  type="text"
-                  id="charName"
-                  name="charName"
-                  onChange={this.handleChange}
-                  value={this.state.charName}
-                />
-                <label htmlFor="charClass">Class: </label>
-                <input
-                  type="text"
-                  id="charClass"
-                  name="charClass"
-                  onChange={this.handleChange}
-                  value={this.state.charClass}
-                  />
-                <label htmlFor="charLvl">Level: </label>
-                <input
-                  type="text"
-                  id="charLvl"
-                  name="charLvl"
-                  onChange={this.handleChange}
-                  value={this.state.charLvl}
-                />
-                <label htmlFor="charJournal">Current Quest: </label>
-                <textarea
-                  id="charJournal"
-                  name="charJournal"
-                  onChange={this.handleChange}
-                  value={this.state.charJournal}
-                />
-                <button type="submit">Submit</button>
-              </form>
-            </div>
+            {/* <FormToggle fromPapa={this.handleFormSubmit} /> */}
+            {this.state.showNewCharForm ? <FormToggle fromPapa={this.handleFormSubmit} /> : null}
+            
+            
+          
           </div>
         </main>
       </div>
@@ -158,3 +151,13 @@ class App extends Component {
   
 
 export default App;
+
+
+// To-Do:
+
+//handleSubmitFunction data must be passed to the Child in FormToggle. 
+
+// store the input data into the character buttons
+  //on click of character buttons, bring up the info that's been inputed. 
+
+// Have avatar images/ something to identify a made character. 

@@ -41,6 +41,7 @@ li{
   font-size: 2rem;
 }
 
+
 .deleteButton {
   border:none;
   padding:5px;
@@ -57,6 +58,7 @@ form{
   display: flex;
   flex-direction: column;
   text-align: left;
+  /* visibility: hidden; */
 }
 
 main .wrapper ul {
