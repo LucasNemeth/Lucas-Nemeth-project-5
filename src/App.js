@@ -45,9 +45,6 @@ class App extends Component {
       });
     })
 
-    dbRef.on('value', (response) => {
-      console.log(dbRef)
-    });
   }
 
   handleChange=(e)=>{
@@ -67,6 +64,7 @@ class App extends Component {
       charClass:this.state.charClass,
       charLvl:this.state.charLvl,
       charJournal:this.state.charJournal,
+      imageUrlInput:this.state.imageUrlInput
     }
 
     dbRef.push(charObject);
@@ -77,6 +75,7 @@ class App extends Component {
       charClass:'',
       charLvl:'',
       charJournal:'',
+      imageUrlInput:''
     })
   }
 
@@ -128,12 +127,12 @@ class App extends Component {
                   </div>
                 {this.state.newCharacter.map((character, index) => {
                   return (
-                    <div>
-                      <li key={index}>
+                    <div key={index}>
+                      <li >
                         <a>
                           <div className="createdChar">
                             <button className="createdCharButton">
-                              <i className="fa fa-head-side"></i>
+                              <h3></h3>
                             </button>
                             <button className="deleteButton" onClick={() => { this.removeChar(character.key) }}>delete</button>
 

@@ -6,7 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #944842;
+  background: #000000;
 }
 
 code {
@@ -84,4 +84,18 @@ main .wrapper ul {
 i{
   font-size: 3rem;
     margin:20px;
+}
+
+h1,
+h2,
+label{
+  font-family: 'Press Start 2P', sans-serif;
+  color: white;
+}
+
+input{
+background: black;
+color: white;
+border: none;
+border-bottom:2px solid red;
 }
