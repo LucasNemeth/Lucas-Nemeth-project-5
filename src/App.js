@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import firebase from './firebase';
-import FormToggle from './FormToggle.js'
+import FormToggle from './FormToggle.js';
+import PrintDisplay from './PrintDisplay.js'
+// import Granim from 'react-granim';
 import 'font-awesome/css/font-awesome.min.css';
-import GoogleFontLoader from './GoogleFontLoader.js';
+
 
 import './App.css';
 //----------------------Constructor Start--------------------//
@@ -10,12 +12,31 @@ class App extends Component {
   constructor(){
     super();
 
+    // const gradient = new Granim({
+    //   element: '#canvas-basic',
+    //   direction: 'top-bottom',
+    //   isPausedWhenNotInView: true,
+    //   states: {
+    //     "default-state": {
+    //       gradients: [
+    //         ['#111111', '#003300'],
+    //         ['#000000', '#004800'],
+    //         ['#111111', '#00ce00']
+    //       ]
+    //     }
+    //   }
+      
+    // });
+    
     this.state={
       newCharacter:[],
       charName:'',
       charClass:'',
       charLvl:'',
-      showNewCharForm:false
+      imageUrlInput:'',
+      showNewCharForm:false,
+      showDisplayInfo:false,
+      test: [],
       
     }
     // this.handleChange=this.handleChange.bind(this);   
@@ -47,36 +68,47 @@ class App extends Component {
 
   }
 
-  handleChange=(e)=>{
-    this.setState({[e.target.name]:e.target.value});
-    // this.setState({ [e.charClass.name]: e.charClass.value });
-  }
+  // handleChange=(e)=>{
+  //   this.setState({[e.target.name]:e.target.value});
+  //   console.log(e.target.name)
+  //   // this.setState({ [e.charClass.name]: e.charClass.value });
+  // }
 //--------------------------Event prevent default--------------------------//
 
-  handleFormSubmit = (e) => {
+  handleFormSubmit = (e, userInput) => {
     e.preventDefault();
 
     console.log('hi')
 
+    // const dbRef = firebase.database().ref();
+    // const charObject={
+    //   charName:this.state.charName,
+    //   charClass:this.state.charClass,
+    //   charLvl:this.state.charLvl,
+    //   charJournal:this.state.charJournal,
+    //   imageUrlInput:this.state.imageUrlInput
+    // }
     const dbRef = firebase.database().ref();
-    const charObject={
-      charName:this.state.charName,
-      charClass:this.state.charClass,
-      charLvl:this.state.charLvl,
-      charJournal:this.state.charJournal,
-      imageUrlInput:this.state.imageUrlInput
+    const charObject = {
+      charName: userInput.charName,
+      charClass: userInput.charClass,
+      charLvl: userInput.charLvl,
+      charJournal: userInput.charJournal,
+      imageUrlInput: userInput.imageUrlInput
     }
+
 
     dbRef.push(charObject);
     console.log(charObject)
 
     this.setState({
-      charName: '',
-      charClass:'',
-      charLvl:'',
-      charJournal:'',
-      imageUrlInput:''
+      charName: userInput.charName,
+      charClass: userInput.charClass,
+      charLvl: userInput.charLvl,
+      charJournal: userInput.charJournal,
+      imageUrlInput: userInput.imageUrlInput
     })
+    console.log(this.state)
   }
 
   addCharacter =(characterKey)=>{
@@ -88,9 +120,15 @@ class App extends Component {
   showForm = (e) =>{
     e.preventDefault();
     this.setState({showNewCharForm:true})
-    console.log('showForm clicked')
   }
   
+  displayInfo = (key) => {
+    const characterToShow = this.state.newCharacter.filter(item => item.key === key)
+    this.setState({
+      showDisplayInfo:true,
+      test: characterToShow,
+    })
+  }
 
 //-----------------------removing character-------------------------//
   removeChar = (characterKey) => {
@@ -102,10 +140,12 @@ class App extends Component {
     return (
       <div className="App">
         <header>
+          
           <div className="wrapper">
             <h1>Adventure Base</h1>
           </div>
         </header>
+
         <main>
           <div className="wrapper">
             <h2>My Characters</h2>
@@ -126,31 +166,49 @@ class App extends Component {
                     </li>
                   </div>
                 {this.state.newCharacter.map((character, index) => {
+                  console.log(character.key)
                   return (
                     <div key={index}>
                       <li >
                         <a>
                           <div className="createdChar">
-                            <button className="createdCharButton">
-                              <h3></h3>
+                            <button 
+                              className="createdCharButton" 
+                              onClick={(e) => this.displayInfo(character.key)}
+                              >
+                              <div className="imgContain">
+                                <img src={this.state.imageUrlInput} alt=""/>
+                              </div>
                             </button>
                             <button className="deleteButton" onClick={() => { this.removeChar(character.key) }}>delete</button>
 
                           </div>
                         </a>
                       </li>
+                      
                     </div>
+                    
                 )
               })}
             </ul>
             {/* <FormToggle fromPapa={this.handleFormSubmit} /> */}
-            {this.state.showNewCharForm ? <FormToggle fromPapa={this.handleFormSubmit} fromChangeParent={this.handleChange} /> : null}
-            
-            
-          
+            {this.state.showNewCharForm ? 
+              <FormToggle 
+                fromPapa={this.handleFormSubmit} 
+                // fromChangeParent={this.handleChange} 
+              /> 
+              : null}
+            {this.state.showDisplayInfo ? 
+            <PrintDisplay 
+                displayParent={this.displayInfo}
+                char={this.state.test}
+              />
+              : null}
           </div>
         </main>
+        {/* <Granim id="granim"></Granim> */}
       </div>
+      
     );
   }
 }

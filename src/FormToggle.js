@@ -9,6 +9,7 @@ class FormToggle extends Component {
         super()
         this.state = {
             isHidden: true
+
         }
     }
     toggleHidden() {
@@ -30,18 +31,37 @@ class FormToggle extends Component {
 
     deferred = (e) => {this.props.fromPapa(e, this.props.handleFormSubmit)}
     
+    emptyState = (e) =>{
+        this.props.fromPapa(e, this.state)
+        this.setState({
+            charName: '',
+            charClass: '',
+            charLvl: '',
+            charJournal: '',
+            imageUrlInput: ''
+        })
+        console.log(this.state)
+        // this.setState = 
+    }
+
+    handleChange = (e) => {   //added user input
+        this.setState({ [e.target.name]: e.target.value });
+        console.log(e.target.name)
+        // this.setState({ [e.charClass.name]: e.charClass.value });
+    }
 
     render() {
         return (
             < div >
-                <form id="charForm" action="submit" onSubmit={this.props.fromPapa}>
+                <form id="charForm" action="submit" onSubmit={this.emptyState}>  {/* adding a state */}
 
                     <label htmlFor="charName">Name: </label>
                     <input
                         type="text"
                         id="charName"
                         name="charName"
-                        onChange={this.props.fromChangeParent}
+                        onChange={this.handleChange}
+                        // onChange={this.props.fromChangeParent}
                         value={this.state.charName}
                     />
                     <label htmlFor="charClass">Class: </label>
@@ -49,7 +69,8 @@ class FormToggle extends Component {
                         type="text"
                         id="charClass"
                         name="charClass"
-                        onChange={this.props.fromChangeParent}
+                        onChange={this.handleChange}
+                        // onChange={this.props.fromChangeParent}
                         value={this.state.charClass}
                     />
                     <label htmlFor="charLvl">Level: </label>
@@ -57,14 +78,16 @@ class FormToggle extends Component {
                         type="text"
                         id="charLvl"
                         name="charLvl"
-                        onChange={this.props.fromChangeParent}
+                        onChange={this.handleChange}
+                        // onChange={this.props.fromChangeParent}
                         value={this.state.charLvl}
                     />
                     <label htmlFor="charJournal">Current Quest: </label>
                     <textarea
                         id="charJournal"
                         name="charJournal"
-                        onChange={this.props.fromChangeParent}
+                        // onChange={this.props.fromChangeParent}
+                        onChange={this.handleChange}
                         value={this.state.charJournal}
                     />
                     <label htmlFor="imageUrlInput">Character Portrait URL:</label>
@@ -72,13 +95,13 @@ class FormToggle extends Component {
                         type="text"
                         name="imageUrlInput" 
                         id="imageUrlInput" 
-                        // onChange={this.handleImageChange} 
-                        onChange={this.props.fromChangeParent}
+                        onChange={this.handleChange} 
+                        // onChange={this.props.fromChangeParent}
                         value={this.state.imageUrlInput}
                     />
                     <img src={this.state.imgSrc} alt="" width="300px" />
 
-                    <button type="submit">Submit</button>
+                    <button className="submit" type="submit">Submit</button>
                 </form>
             </div >
         )
