@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "155a68be537c4e2bb690d3d3b972a648",
+    "revision": "eeedd436782ccd47c1b7952409f7bdb1",
     "url": "/Lucas-Nemeth-project-5/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Lucas-Nemeth-project-5/static/css/2.086da048.chunk.css"
   },
   {
-    "revision": "2a4d36f5857580a533e3",
-    "url": "/Lucas-Nemeth-project-5/static/css/main.cfaa9b63.chunk.css"
+    "revision": "2dcad922ec2b533645ce",
+    "url": "/Lucas-Nemeth-project-5/static/css/main.78d19d66.chunk.css"
   },
   {
     "revision": "6a73e4f834dc5f05f809",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Lucas-Nemeth-project-5/static/js/2.dd76b788.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2a4d36f5857580a533e3",
-    "url": "/Lucas-Nemeth-project-5/static/js/main.c601bfb2.chunk.js"
+    "revision": "2dcad922ec2b533645ce",
+    "url": "/Lucas-Nemeth-project-5/static/js/main.67c14404.chunk.js"
   },
   {
     "revision": "420388ddf26467d81ffe",
