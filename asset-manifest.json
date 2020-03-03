@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/Lucas-Nemeth-project-5/static/css/main.78d19d66.chunk.css",
-    "main.js": "/Lucas-Nemeth-project-5/static/js/main.67c14404.chunk.js",
-    "main.js.map": "/Lucas-Nemeth-project-5/static/js/main.67c14404.chunk.js.map",
+    "main.css": "/Lucas-Nemeth-project-5/static/css/main.f62c99a3.chunk.css",
+    "main.js": "/Lucas-Nemeth-project-5/static/js/main.d3ec1ac7.chunk.js",
+    "main.js.map": "/Lucas-Nemeth-project-5/static/js/main.d3ec1ac7.chunk.js.map",
     "runtime-main.js": "/Lucas-Nemeth-project-5/static/js/runtime-main.b0bce112.js",
     "runtime-main.js.map": "/Lucas-Nemeth-project-5/static/js/runtime-main.b0bce112.js.map",
     "static/css/2.086da048.chunk.css": "/Lucas-Nemeth-project-5/static/css/2.086da048.chunk.css",
-    "static/js/2.dd76b788.chunk.js": "/Lucas-Nemeth-project-5/static/js/2.dd76b788.chunk.js",
-    "static/js/2.dd76b788.chunk.js.map": "/Lucas-Nemeth-project-5/static/js/2.dd76b788.chunk.js.map",
+    "static/js/2.5de6ca7f.chunk.js": "/Lucas-Nemeth-project-5/static/js/2.5de6ca7f.chunk.js",
+    "static/js/2.5de6ca7f.chunk.js.map": "/Lucas-Nemeth-project-5/static/js/2.5de6ca7f.chunk.js.map",
     "index.html": "/Lucas-Nemeth-project-5/index.html",
-    "precache-manifest.0e5ef388c65c32b1bfdf779b2b2e7b2f.js": "/Lucas-Nemeth-project-5/precache-manifest.0e5ef388c65c32b1bfdf779b2b2e7b2f.js",
+    "precache-manifest.0382daac690562610e9dc25d7804ea7c.js": "/Lucas-Nemeth-project-5/precache-manifest.0382daac690562610e9dc25d7804ea7c.js",
     "service-worker.js": "/Lucas-Nemeth-project-5/service-worker.js",
     "static/css/2.086da048.chunk.css.map": "/Lucas-Nemeth-project-5/static/css/2.086da048.chunk.css.map",
-    "static/css/main.78d19d66.chunk.css.map": "/Lucas-Nemeth-project-5/static/css/main.78d19d66.chunk.css.map",
-    "static/js/2.dd76b788.chunk.js.LICENSE.txt": "/Lucas-Nemeth-project-5/static/js/2.dd76b788.chunk.js.LICENSE.txt",
+    "static/css/main.f62c99a3.chunk.css.map": "/Lucas-Nemeth-project-5/static/css/main.f62c99a3.chunk.css.map",
+    "static/js/2.5de6ca7f.chunk.js.LICENSE.txt": "/Lucas-Nemeth-project-5/static/js/2.5de6ca7f.chunk.js.LICENSE.txt",
     "static/media/font-awesome.min.css": "/Lucas-Nemeth-project-5/static/media/fontawesome-webfont.fee66e71.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.b0bce112.js",
     "static/css/2.086da048.chunk.css",
-    "static/js/2.dd76b788.chunk.js",
-    "static/css/main.78d19d66.chunk.css",
-    "static/js/main.67c14404.chunk.js"
+    "static/js/2.5de6ca7f.chunk.js",
+    "static/css/main.f62c99a3.chunk.css",
+    "static/js/main.d3ec1ac7.chunk.js"
   ]
 }
