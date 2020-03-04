@@ -69,8 +69,6 @@ class App extends Component {
   handleFormSubmit = (e, userInput) => {
     e.preventDefault();
 
-    console.log('hi')
-
     const dbRef = firebase.database().ref();
     const charObject = {
       charName: userInput.charName,
@@ -83,7 +81,6 @@ class App extends Component {
 
 
     dbRef.push(charObject);
-    console.log(charObject)
 
     this.setState({
       charName: userInput.charName,
@@ -93,13 +90,11 @@ class App extends Component {
       imageUrlInput: userInput.imageUrlInput,
       charInventory: userInput.charInventory
     })
-    console.log(this.state)
   }
 
   addCharacter =(characterKey)=>{
     const dbRef = firebase.database().ref()
     dbRef.child(characterKey).push();
-    console.log(this.state.addCharacter)
   }
 
   showForm = (e) =>{
@@ -135,48 +130,43 @@ class App extends Component {
           <div className="wrapper">
             <h2>My Characters</h2>
             <ul>
-              {/* {this.state.newCharacter.map((character, index)=>{
-                return ( */}
-                  <div className="charContainer">
-                    <li >
-                      <a href="">
-                        <div className="charButtons">
-                          <button className="newCharButton" onClick={
-                            this.showForm
-                          }>
-                            <i className="fa fa-plus-square"></i>
-                          </button>
-                        </div>
-                      </a>
-                    </li>
-                  </div>
-                {this.state.newCharacter.map((character, index) => {
-                  console.log(character.key)
-                  return (
-                    <div key={index}>
-                      <li >
-                        <a>
-                          <div className="createdChar">
-                            <button 
-                              className="createdCharButton" 
-                              onClick={(e) => this.displayInfo(character.key)}
-                              >
-                              <div className="imgContain">
-                                <i className="fa fa-user-circle" font-size="5rem"></i>
-                              </div>
-                            </button>
-                            <button className="deleteButton" onClick={() => { this.removeChar(character.key) }}>delete</button>
-
-                          </div>
-                        </a>
-                      </li>
-                      
+              <div className="charContainer">
+                <li >
+                  <a href="">
+                    <div className="charButtons">
+                      <button className="newCharButton" onClick={
+                        this.showForm
+                      }>
+                        <i className="fa fa-plus-square"></i>
+                      </button>
                     </div>
-                    
+                  </a>
+                </li>
+              </div>
+            {this.state.newCharacter.map((character, index) => {
+              return (
+                <div key={index}>
+                  <li >
+                    <a>
+                      <div className="createdChar">
+                        <button 
+                          className="createdCharButton" 
+                          onClick={(e) => this.displayInfo(character.key)}
+                          >
+                          <div className="imgContain">
+                            <i className="fa fa-user-circle" font-size="5rem"></i>
+                          </div>
+                        </button>
+                        <button className="deleteButton" onClick={() => { this.removeChar(character.key) }}>delete</button>
+
+                      </div>
+                    </a>
+                  </li>
+                  
+                </div>
                 )
               })}
             </ul>
-            {/* <FormToggle fromPapa={this.handleFormSubmit} /> */}
             {this.state.showDisplayInfo ?
               <PrintDisplay
                 displayParent={this.displayInfo}
@@ -192,7 +182,6 @@ class App extends Component {
             
           </div>
         </main>
-        {/* <Granim id="granim"></Granim> */}
       </div>
       
     );
@@ -205,9 +194,5 @@ export default App;
 
 // To-Do:
 
-//handleSubmitFunction data must be passed to the Child in FormToggle. 
-
-// store the input data into the character buttons
-  //on click of character buttons, bring up the info that's been inputed. 
-
-// Have avatar images/ something to identify a made character. 
+// Have avatar images/ something to identify a made character.  :( 
+  // Unfortunately didn't get a chance to finish this. brain shut down last night. will come in patch 1.2.0

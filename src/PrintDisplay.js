@@ -19,7 +19,6 @@ class PrintDisplay extends Component {
 
     render() {
         const { name } = this.props.char[0];
-        console.log(name)
         return (
             <div className="display">
                 <ul className="displayList">
@@ -39,6 +38,3 @@ class PrintDisplay extends Component {
 
 export default PrintDisplay;
 
-//we'll toggle this. have it display nothing by default until a click of createdChar button.
-
-//on click we'll need to populate this with the setstate of whatever info within the  button that was clicked

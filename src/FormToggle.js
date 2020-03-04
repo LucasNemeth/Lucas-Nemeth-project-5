@@ -43,13 +43,11 @@ class FormToggle extends Component {
             charInventory:'',
             imageUrlInput: ''
         })
-        console.log(this.state)
         // this.setState = 
     }
 
     handleChange = (e) => {   //added user input
         this.setState({ [e.target.name]: e.target.value });
-        console.log(e.target.name)
         // this.setState({ [e.charClass.name]: e.charClass.value });
     }
 
