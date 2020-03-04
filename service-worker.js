@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Lucas-Nemeth-project-5/precache-manifest.0382daac690562610e9dc25d7804ea7c.js"
+  "/Lucas-Nemeth-project-5/precache-manifest.6d9fb76d7ad75c163fac608083a5cd86.js"
 );
 
 self.addEventListener('message', (event) => {
