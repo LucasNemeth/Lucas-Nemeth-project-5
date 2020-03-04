@@ -39,10 +39,6 @@ class App extends Component {
       test: [],
       
     }
-    // this.handleChange=this.handleChange.bind(this);   
-    // this.handleChange=()=>{
-    //   this.handleChange(this);
-    // }
   }
   
   componentDidMount(){
@@ -68,11 +64,6 @@ class App extends Component {
 
   }
 
-  // handleChange=(e)=>{
-  //   this.setState({[e.target.name]:e.target.value});
-  //   console.log(e.target.name)
-  //   // this.setState({ [e.charClass.name]: e.charClass.value });
-  // }
 //--------------------------Event prevent default--------------------------//
 
   handleFormSubmit = (e, userInput) => {
@@ -80,21 +71,14 @@ class App extends Component {
 
     console.log('hi')
 
-    // const dbRef = firebase.database().ref();
-    // const charObject={
-    //   charName:this.state.charName,
-    //   charClass:this.state.charClass,
-    //   charLvl:this.state.charLvl,
-    //   charJournal:this.state.charJournal,
-    //   imageUrlInput:this.state.imageUrlInput
-    // }
     const dbRef = firebase.database().ref();
     const charObject = {
       charName: userInput.charName,
       charClass: userInput.charClass,
       charLvl: userInput.charLvl,
       charJournal: userInput.charJournal,
-      imageUrlInput: userInput.imageUrlInput
+      imageUrlInput: userInput.imageUrlInput,
+      charInventory: userInput.charInventory
     }
 
 
@@ -106,7 +90,8 @@ class App extends Component {
       charClass: userInput.charClass,
       charLvl: userInput.charLvl,
       charJournal: userInput.charJournal,
-      imageUrlInput: userInput.imageUrlInput
+      imageUrlInput: userInput.imageUrlInput,
+      charInventory: userInput.charInventory
     })
     console.log(this.state)
   }
@@ -126,7 +111,7 @@ class App extends Component {
     const characterToShow = this.state.newCharacter.filter(item => item.key === key)
     this.setState({
       showDisplayInfo:true,
-      test: characterToShow,
+      showCharacter: characterToShow,
     })
   }
 
@@ -177,7 +162,7 @@ class App extends Component {
                               onClick={(e) => this.displayInfo(character.key)}
                               >
                               <div className="imgContain">
-                                <img src={this.state.imageUrlInput} alt=""/>
+                                <i className="fa fa-user-circle" font-size="5rem"></i>
                               </div>
                             </button>
                             <button className="deleteButton" onClick={() => { this.removeChar(character.key) }}>delete</button>
@@ -192,18 +177,19 @@ class App extends Component {
               })}
             </ul>
             {/* <FormToggle fromPapa={this.handleFormSubmit} /> */}
+            {this.state.showDisplayInfo ?
+              <PrintDisplay
+                displayParent={this.displayInfo}
+                char={this.state.showCharacter}
+              />
+              : null}
             {this.state.showNewCharForm ? 
               <FormToggle 
                 fromPapa={this.handleFormSubmit} 
                 // fromChangeParent={this.handleChange} 
               /> 
               : null}
-            {this.state.showDisplayInfo ? 
-            <PrintDisplay 
-                displayParent={this.displayInfo}
-                char={this.state.test}
-              />
-              : null}
+            
           </div>
         </main>
         {/* <Granim id="granim"></Granim> */}

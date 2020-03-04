@@ -19,9 +19,11 @@ class FormToggle extends Component {
     }
 
     handleImageChange = (e) => {
+        // const imageToShow = this.state.imageUrlInput.filter(item => item.key === key)
         this.setState({
             imgFile: e.target.files[0],
             imgSrc: URL.createObjectURL(e.target.files[0]),
+            // showImage:imageToShow
         });
         
         URL.revokeObjectURL(e.target.files[0]); //to avoid memory issues
@@ -38,6 +40,7 @@ class FormToggle extends Component {
             charClass: '',
             charLvl: '',
             charJournal: '',
+            charInventory:'',
             imageUrlInput: ''
         })
         console.log(this.state)
@@ -53,7 +56,12 @@ class FormToggle extends Component {
     render() {
         return (
             < div >
-                <form id="charForm" action="submit" onSubmit={this.emptyState}>  {/* adding a state */}
+                <form 
+                    id="charForm" 
+                    action="submit" 
+                    onSubmit={this.emptyState}
+                    char={this.state.showImage}
+                    >  {/* adding a state */}
 
                     <label htmlFor="charName">Name: </label>
                     <input
@@ -75,12 +83,21 @@ class FormToggle extends Component {
                     />
                     <label htmlFor="charLvl">Level: </label>
                     <input
-                        type="text"
+                        type="number"
                         id="charLvl"
                         name="charLvl"
+                        min="1"
+                        max="20"
                         onChange={this.handleChange}
                         // onChange={this.props.fromChangeParent}
                         value={this.state.charLvl}
+                    />
+                    <label htmlFor="charInventory">Inventory: </label>
+                    <textarea 
+                        name="charInventory" 
+                        id="charInventory" 
+                        onChange={this.handleChange} 
+                        value={this.state.charInventory}
                     />
                     <label htmlFor="charJournal">Current Quest: </label>
                     <textarea

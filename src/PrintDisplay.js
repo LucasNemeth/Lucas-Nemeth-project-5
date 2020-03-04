@@ -22,12 +22,14 @@ class PrintDisplay extends Component {
         console.log(name)
         return (
             <div className="display">
-                <ul>
-                    <li><img src={name.imgUrlInput} alt="" /></li>
+                <ul className="displayList">
+                    {/* <li><img src={this.state.imgUrlInput} alt="" /></li> */}
                     <li><h3>Name: {name.charName}</h3></li>
                     <li><h3>Class: {name.charClass}</h3></li>
                     <li><h3>Level: {name.charLvl}</h3></li>
                     <li><h3>Current Quest: {name.charJournal}</h3></li>
+                    <li><h3>Equipment: {name.charInventory}</h3></li>
+
                 </ul>
             </div>
         );
