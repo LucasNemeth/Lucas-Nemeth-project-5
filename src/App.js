@@ -158,7 +158,7 @@ class App extends Component {
                           onClick={(e) => this.displayInfo(character.key)}
                           >
                           <div className="imgContain">
-                            <i className="fa fa-user-circle" font-size="5rem"></i>
+                            <i className="fa fa-user-circle" fontSize="5rem"></i>
                           </div>
                         </button>
                         <button className="deleteButton" onClick={() => { this.removeChar(character.key) }}>delete</button>

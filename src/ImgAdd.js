@@ -22,7 +22,7 @@ class ImgAdd extends Component {
         return (
             <div>
                 <div className="imgMenu">
-                    <button className="charPortrait"><img src="./assets/Screenshot_1.jpg" alt="Human fighter"></img></button>
+                    <button className="charPortrait"><img className="charPortrait"src="./assets/Screenshot_1.jpg" alt="Human fighter"></img></button>
 
                     <button className="charPortrait"> <img src="./assets/Screenshot_2.jpg" alt="Human Sorceress"/></button >
 
