@@ -33,7 +33,7 @@ class App extends Component {
       charName:'',
       charClass:'',
       charLvl:'',
-      imageUrlInput:'',
+      // imageUrlInput:'',
       showNewCharForm:false,
       showDisplayInfo:false,
       test: [],
@@ -75,7 +75,7 @@ class App extends Component {
       charClass: userInput.charClass,
       charLvl: userInput.charLvl,
       charJournal: userInput.charJournal,
-      imageUrlInput: userInput.imageUrlInput,
+      // imageUrlInput: userInput.imageUrlInput,
       charInventory: userInput.charInventory
     }
 
@@ -87,7 +87,7 @@ class App extends Component {
       charClass: userInput.charClass,
       charLvl: userInput.charLvl,
       charJournal: userInput.charJournal,
-      imageUrlInput: userInput.imageUrlInput,
+      // imageUrlInput: userInput.imageUrlInput,
       charInventory: userInput.charInventory
     })
   }
@@ -109,6 +109,10 @@ class App extends Component {
       showCharacter: characterToShow,
     })
   }
+
+
+//-----------------------error handling------------------------------//
+  
 
 //-----------------------removing character-------------------------//
   removeChar = (characterKey) => {
@@ -132,7 +136,7 @@ class App extends Component {
             <ul>
               <div className="charContainer">
                 <li >
-                  <a href="">
+                  <a href="#">
                     <div className="charButtons">
                       <button className="newCharButton" onClick={
                         this.showForm
@@ -147,7 +151,7 @@ class App extends Component {
               return (
                 <div key={index}>
                   <li >
-                    <a>
+                    <a href="#">
                       <div className="createdChar">
                         <button 
                           className="createdCharButton" 

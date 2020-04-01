@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ImgAdd from './ImgAdd'
 
 import './App.css';
 
@@ -41,7 +42,7 @@ class FormToggle extends Component {
             charLvl: '',
             charJournal: '',
             charInventory:'',
-            imageUrlInput: ''
+            // imageUrlInput: ''
         })
         // this.setState = 
     }
@@ -105,15 +106,17 @@ class FormToggle extends Component {
                         onChange={this.handleChange}
                         value={this.state.charJournal}
                     />
-                    <label htmlFor="imageUrlInput">Character Portrait URL:</label>
+                    {/* <label htmlFor="imageUrlInput">Character Portrait URL:</label>
                     <input 
                         type="text"
                         name="imageUrlInput" 
                         id="imageUrlInput" 
-                        onChange={this.handleChange} 
-                        // onChange={this.props.fromChangeParent}
+                        // onChange={this.handleChange} 
+                        onChange={this.props.fromChangeParent}
                         value={this.state.imageUrlInput}
-                    />
+                    /> */}
+                    <ImgAdd 
+                    fromImgParent={this.handleFormSubmit}/>
                     <img src={this.state.imgSrc} alt="" width="300px" />
 
                     <button className="submit" type="submit">Submit</button>
