@@ -172,10 +172,13 @@ class App extends Component {
               })}
             </ul>
             {this.state.showDisplayInfo ?
+              
               <PrintDisplay
                 displayParent={this.displayInfo}
                 char={this.state.showCharacter}
+                
               />
+              
               : null}
             {this.state.showNewCharForm ? 
               <FormToggle 

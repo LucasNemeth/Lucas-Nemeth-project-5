@@ -15,7 +15,7 @@ body {
 }
 
 img{
-  width: 100%;
+  height: 100%;
   height: auto;
   display: block;
 }
@@ -144,4 +144,31 @@ border-bottom:2px solid red;
   border: 2px solid red;
   color:white;
   font-family: 'Press Start 2P',sans-serif;
+}
+
+.imgMenu{
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+}
+.charPortrait img{
+  max-height: 200px;
+  margin: 0 auto;
+}
+
+@media(max-width:955px){
+  .imgMenu{
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+}
+
+@media(max-width:700px){
+  .imgMenu{
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+
+@media(max-width: 540px){
+  .imgMenu{
+    grid-template-columns: 50% 50%;
+  }
 }

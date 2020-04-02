@@ -19,17 +19,17 @@ class FormToggle extends Component {
         })
     }
 
-    handleImageChange = (e) => {
-        // const imageToShow = this.state.imageUrlInput.filter(item => item.key === key)
-        this.setState({
-            imgFile: e.target.files[0],
-            imgSrc: URL.createObjectURL(e.target.files[0]),
-            // showImage:imageToShow
-        });
+    // handleImageChange = (e) => {
+    //     // const imageToShow = this.state.imageUrlInput.filter(item => item.key === key)
+    //     this.setState({
+    //         imgFile: e.target.files[0],
+    //         imgSrc: URL.createObjectURL(e.target.files[0]),
+    //         // showImage:imageToShow
+    //     });
         
-        URL.revokeObjectURL(e.target.files[0]); //to avoid memory issues
+    //     URL.revokeObjectURL(e.target.files[0]); //to avoid memory issues
         
-    }
+    // }
     
 
     deferred = (e) => {this.props.fromPapa(e, this.props.handleFormSubmit)}
@@ -115,10 +115,13 @@ class FormToggle extends Component {
                         onChange={this.props.fromChangeParent}
                         value={this.state.imageUrlInput}
                     /> */}
-                    <ImgAdd 
-                    fromImgParent={this.handleFormSubmit}/>
-                    <img src={this.state.imgSrc} alt="" width="300px" />
-
+                    <label htmlFor="imgAdd">
+                        Character Portrait:
+                    </label>
+                        <ImgAdd id="imgAdd"
+                        fromImgParent={this.handleFormSubmit}/>
+                        <img src={this.state.imgSrc} alt="" width="300px" />
+                    
                     <button className="submit" type="submit">Submit</button>
                 </form>
             </div >

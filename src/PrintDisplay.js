@@ -28,6 +28,7 @@ class PrintDisplay extends Component {
                     <li><h3>Level: {name.charLvl}</h3></li>
                     <li><h3>Current Quest: {name.charJournal}</h3></li>
                     <li><h3>Equipment: {name.charInventory}</h3></li>
+                    <button>Edit</button>
 
                 </ul>
             </div>
