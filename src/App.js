@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './firebase';
 import FormToggle from './FormToggle.js';
-import PrintDisplay from './PrintDisplay.js'
+import PrintDisplay from './PrintDisplay.js';
 // import Granim from 'react-granim';
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -11,22 +11,6 @@ import './App.css';
 class App extends Component {
   constructor(){
     super();
-
-    // const gradient = new Granim({
-    //   element: '#canvas-basic',
-    //   direction: 'top-bottom',
-    //   isPausedWhenNotInView: true,
-    //   states: {
-    //     "default-state": {
-    //       gradients: [
-    //         ['#111111', '#003300'],
-    //         ['#000000', '#004800'],
-    //         ['#111111', '#00ce00']
-    //       ]
-    //     }
-    //   }
-      
-    // });
     
     this.state={
       newCharacter:[],
@@ -37,6 +21,7 @@ class App extends Component {
       showNewCharForm:false,
       showDisplayInfo:false,
       test: [],
+      edit:false,
       
     }
   }
@@ -111,6 +96,14 @@ class App extends Component {
   }
 
 
+  editCharacterInfo =(characterKey)=>{
+    console.log(characterKey)
+    this.setState({
+        edit:true,
+        showNewCharForm:true
+    })
+  }
+
 //-----------------------error handling------------------------------//
   
 
@@ -123,6 +116,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        
         <header>
           
           <div className="wrapper">
@@ -176,14 +170,18 @@ class App extends Component {
               <PrintDisplay
                 displayParent={this.displayInfo}
                 char={this.state.showCharacter}
-                
+                editCharacter={this.editCharacterInfo}
               />
               
               : null}
             {this.state.showNewCharForm ? 
               <FormToggle 
                 fromPapa={this.handleFormSubmit} 
-                // fromChangeParent={this.handleChange} 
+                characterInfo={this.state.showCharacter}
+                editForm={this.state.edit}
+                // fromChangeParent={this.handleChange}
+                // this.x = usually a function
+                // this.state.x = usually a value
               /> 
               : null}
             

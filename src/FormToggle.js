@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import ImgAdd from './ImgAdd'
+import ImgAdd from './ImgAdd';
+
 
 import './App.css';
+
 
 
 
@@ -53,6 +55,14 @@ class FormToggle extends Component {
     }
 
     render() {
+        if(this.props.editForm){
+            this.state.charName=this.props.characterInfo[0].name.charName;
+            console.log(this.props.characterInfo);
+        }
+
+        if(this.state===undefined){
+            Error('Please enter in all info');
+        }
         return (
             < div >
                 <form 
@@ -69,7 +79,7 @@ class FormToggle extends Component {
                         name="charName"
                         onChange={this.handleChange}
                         // onChange={this.props.fromChangeParent}
-                        value={this.state.charName}
+                        value={this.state.charName } 
                     />
                     <label htmlFor="charClass">Class: </label>
                     <input
@@ -121,8 +131,7 @@ class FormToggle extends Component {
                         <ImgAdd id="imgAdd"
                         fromImgParent={this.handleFormSubmit}/>
                         <img src={this.state.imgSrc} alt="" width="300px" />
-                    
-                    <button className="submit" type="submit">Submit</button>
+                        <button className="submit" type="submit">Submit</button>
                 </form>
             </div >
         )

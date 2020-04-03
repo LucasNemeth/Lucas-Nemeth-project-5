@@ -18,7 +18,8 @@ class PrintDisplay extends Component {
     
 
     render() {
-        const { name } = this.props.char[0];
+        const { key, name } = this.props.char[0];
+        console.log(key, name)
         return (
             <div className="display">
                 <ul className="displayList">
@@ -28,7 +29,10 @@ class PrintDisplay extends Component {
                     <li><h3>Level: {name.charLvl}</h3></li>
                     <li><h3>Current Quest: {name.charJournal}</h3></li>
                     <li><h3>Equipment: {name.charInventory}</h3></li>
-                    <button>Edit</button>
+                    <button onClick={
+                        ()=>{this.props.editCharacter(key)}
+                    }>
+                        Edit</button>
 
                 </ul>
             </div>
